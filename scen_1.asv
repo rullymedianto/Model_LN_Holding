@@ -1,0 +1,5 @@
+%%Simulation Scenario File
+numb = 100;
+time= 3600; % Durasi simulasi
+Vw = 6;   % Besar kecepatan angin
+tetaw = 210; %sudut arah angin (dari)

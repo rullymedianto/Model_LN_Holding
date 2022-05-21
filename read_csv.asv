@@ -1,0 +1,12 @@
+myFolder1 = 'D:\Hasil_Februari\Speed_Dev\';
+% Get a list of all files in the folder with the desired file name pattern.
+filePattern1 = fullfile(myFolder1, '*.csv'); % Format/ pattern 
+theFiles1 = dir(filePattern1);
+
+for i = 1 :1: length(theFiles1)
+    baseFileName1 = theFiles1(i).name;
+    fullFileName1 = fullfile(theFiles1(i).folder, baseFileName1);
+    fprintf(1, 'Now reading %s\n', fullFileName1);
+    [theFiles1(i).Data] = readtable(fullFileName1);
+  
+end
