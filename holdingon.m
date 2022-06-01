@@ -24,7 +24,9 @@ elseif holding_on_old == 0 && holdpoint ~=0 % menuju titik holding
         holding_on = 0;
         holding_time = 0;
     end
-    
+else
+    holding_on = 0;
+    holding_time = 0;
 end
 end
 

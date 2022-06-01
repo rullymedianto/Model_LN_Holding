@@ -216,9 +216,9 @@ end
 
 Holding_atr{1,i+1}(1,j)               = hold_code(Sim1{1,i}(1,j),Sim2{1,i}(1,j),Sim1{1,i}(4,j)) ; %Holding code
 
-[Holding_atr{1,i+1}(2,j),Holding_atr{1,i+1}(3,j),Holding_atr{1,i+1}(4,j),Holding_atr{1,i+1}(8,j)] = hold_to(Sim1{1,i}(1,:),Sim2{1,i}(1,:),Holding_atr{1,i}(1,j),Holding_atr{1,i}(1,:),Holding_atr{1,i}(2,j),Holding_atr{1,i}(6,j),Holding_atr{1,i}(3,j), Holding_atr{1,i}(3,:),Holding_atr{1,i}(5,j));
+[Holding_atr{1,i+1}(2,j),Holding_atr{1,i+1}(3,j),Holding_atr{1,i+1}(4,j),Holding_atr{1,i+1}(8,j)] = hold_to(Sim1{1,i}(1,:),Sim2{1,i}(1,:),Holding_atr{1,i}(1,j),Holding_atr{1,i}(1,:),Holding_atr{1,i}(2,j),Holding_atr{1,i}(6,j),Holding_atr{1,i}(3,j), Holding_atr{1,i}(3,:));
 Holding_atr{1,i+1}(5,j)             = delta_holdpoint(Sim1{1,i}(5,j),Sim1{1,i}(6,j),Sim1{1,i}(4,j),Holding_atr{1,i}(4,j)); % delta holdpoint
-[Holding_atr{1,i+1}(6,j),Holding_atr{1,i+1}(7,j)] = holdingon(Holding_atr{1,i}(6,j),Holding_atr{1,i+1}(2,j),Holding_atr{1,i}(7,j), Holding_atr{1,i}(5,j));
+[Holding_atr{1,i+1}(6,j),Holding_atr{1,i+1}(7,j)] = holdingon(Holding_atr{1,i}(6,j),Holding_atr{1,i+1}(2,j),Holding_atr{1,i}(7,j), delta_holdpoint(Sim1{1,i}(5,j),Sim1{1,i}(6,j), Sim1{1,i}(4,j),Holding_atr{1,i}(4,j)));
 
 
 % POSITION    

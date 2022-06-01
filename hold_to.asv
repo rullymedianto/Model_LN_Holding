@@ -1,4 +1,4 @@
-function [Holdpoint,urutan,h_desire_new,antrian2] = hold_to(all_segmen,all_rute,code,all_code,holdpoint_old,holding_on_old,urutan_old, urutan_last,delta_holdpoint)
+function [Holdpoint,urutan,h_desire_new,antrian2] = hold_to(all_segmen,all_rute,code,all_code,holdpoint_old,holding_on_old,urutan_old, urutan_last)
 %Fungsi untuk menentukan apakah perlu holding dan holding di holdpoint yang mana
 % Input: - Jumlah pesawat yang terbang di rute tertentu (all_rute)
 %        - Jumlah pesawat yang terbang di segmen tertentu (all_segmen)
@@ -15,8 +15,8 @@ function [Holdpoint,urutan,h_desire_new,antrian2] = hold_to(all_segmen,all_rute,
 
 heigh_holding = [4267 6706 7315];
 
-sigma_13 = sum(all_rute == 1  & all_segmen == 3);
- sigma_14 = sum(all_rute == 1  & all_segmen == 4);
+sigma_13 = sum(all_rute == 1  & all_segmen == 4);
+ sigma_14 = sum(all_rute == 1  & all_segmen == 5);
  sigma_22 = sum(all_rute == 2  & all_segmen == 3);
  sigma_23 =  sum(all_rute == 2  & all_segmen == 4);
  sigma_32 = sum(all_rute == 3  & all_segmen == 3);
@@ -34,7 +34,7 @@ elseif holdpoint_old == 0  && holding_on_old ~= 0 %% sudah tidak dalam holdpoint
     urutan = urutan_old;
 else
     
-if code ==1 && urutan_old == 0 && delta_holdpoint > 41670
+if code ==1 && urutan_old == 0
     
     if (sigma_13 + sigma_14 > 3) && (sigma_14 + sigma_23 + sigma_33 > 2)
         Holdpoint = 1; % Holdpoint di CARLI
@@ -44,7 +44,7 @@ if code ==1 && urutan_old == 0 && delta_holdpoint > 41670
         urutan = 0;
     end
     
-elseif code == 2 && urutan_old == 0 && delta_holdpoint > 41670
+elseif code == 2 && urutan_old == 0
     
     if (sigma_22 + sigma_23 > 3) && (sigma_14 + sigma_23 + sigma_33 > 2)
         Holdpoint = 2; % Holdpoint di BUNIK
@@ -54,7 +54,7 @@ elseif code == 2 && urutan_old == 0 && delta_holdpoint > 41670
         urutan = 0;
     end
 
-elseif code ==3 && urutan_old == 0 && delta_holdpoint > 41670
+elseif code ==3 && urutan_old == 0
     if (sigma_32 + sigma_33 > 3) && (sigma_14 + sigma_23 + sigma_33 > 2)
         Holdpoint = 3; % Holdpoint di DENDY
         urutan = antrian3 +1;

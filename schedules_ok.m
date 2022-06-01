@@ -58,7 +58,7 @@ Sim2 = cell(1,time);
 IAT=90;
 sa1=jadwal1(time);
 sa2=jadwal1(time);
-sa3=[0];
+sa3=jadwal1(time);
 
 [m1,n1]= size(sa1);
 [m2,n2]= size(sa2);
@@ -379,6 +379,19 @@ end
     Sim1{1,1}(30,i) = 1; % Status Conflict
     Sim1{1,1}(31,i) = 0; % Status Crossing Conflict
     Sim1{1,1}(32,i) = 1; % Status potensi Conflict
+    
+%% Holding atribute
+
+Holding_atr{1,1}(1,i)= 0;% 1 == Holding Code
+Holding_atr{1,1}(2,i)= 0;% 2 == Holdpoint (need holding)
+Holding_atr{1,1}(3,i)= 0;% 3 == Urutan Holding1
+Holding_atr{1,1}(4,i)= 0;% 4 == Urutan Holding2
+Holding_atr{1,1}(5,i)= 0;% 5 == Urutan Holding3
+Holding_atr{1,1}(6,i)= 0;% 6 == Ketinggian holding
+Holding_atr{1,1}(7,i)= 0;% 7 == delta Holding point
+Holding_atr{1,1}(8,i)= 0;% 8 == Holding on(sedang holding)
+Holding_atr{1,1}(9,i)= 0;% 9 == Holding time
+    
                         if b == NavAIP{2,a}(1,1)
                             a = a+1;
                             b = 1;
@@ -391,7 +404,7 @@ end
                         end
 end
 
-save('PlaneGenerator.mat', 'Route','InitialPos','Sim1','sched','Time_Trigger','label','Holding_status','InitialROW','airplane_input',  '-v7.3')
+save('PlaneGenerator.mat', 'Route','InitialPos','Sim1','sched','Time_Trigger','label','Holding_status','InitialROW','airplane_input','Holding_atr',  '-v7.3')
 % save('Route.mat', 'Route', '-v7.3')
 
 de = rand();
